@@ -9,7 +9,6 @@ import ThreeScene from "../components/three-scene"
 // Rotating Focus Titles
 function TitleRotator({ titles }: { titles: string[] }) {
   const [index, setIndex] = useState(0)
-
   useEffect(() => {
     const timer = setInterval(() => setIndex((prev) => (prev + 1) % titles.length), 3000)
     return () => clearInterval(timer)
@@ -23,7 +22,9 @@ function TitleRotator({ titles }: { titles: string[] }) {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: -20, opacity: 0 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
-        className="text-xl md:text-2xl font-semibold text-white"
+        className="text-2xl md:text-2xl font-semibold
+                   bg-gradient-to-r from-cyan-400 via-green-300 to-purple-500
+                   bg-clip-text text-transparent drop-shadow-md"
       >
         {titles[index]}
       </motion.div>
@@ -34,7 +35,6 @@ function TitleRotator({ titles }: { titles: string[] }) {
 // Rotating Secondary Roles
 function RoleRotator({ roles }: { roles: string[] }) {
   const [index, setIndex] = useState(0)
-
   useEffect(() => {
     const timer = setInterval(() => setIndex((prev) => (prev + 1) % roles.length), 2500)
     return () => clearInterval(timer)
@@ -49,10 +49,9 @@ function RoleRotator({ roles }: { roles: string[] }) {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: "-100%", opacity: 0 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="text-lg md:text-xl font-medium
-           bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-500
-           bg-clip-text text-transparent drop-shadow-xl
-"
+          className="text-xl md:text-xl font-medium
+                     bg-gradient-to-r from-cyan-300 via-green-200 to-purple-400
+                     bg-clip-text text-transparent drop-shadow-md"
         >
           {roles[index]}
         </motion.div>
@@ -83,20 +82,12 @@ export default function HeroSection() {
     if (nextSection) nextSection.scrollIntoView({ behavior: "smooth" })
   }
 
-  // Beginner-friendly focus titles
   const focusTitles = [
     "FullStack Developer | Backend Focus",
     "Frontend Developer | React & Next.js",
     "Database & API Development"
   ]
-
-  // Fresher-friendly secondary roles
-  const secondaryRoles = [
-    "Backend Developer",
-    "API Builder",
-    "Database Enthusiast",
-    "Cloud Learner"
-  ]
+  const secondaryRoles = ["Backend Developer", "API Builder", "Database Enthusiast", "Cloud Learner"]
 
   return (
     <section id="home" className="relative w-screen h-screen overflow-hidden" ref={heroRef}>
@@ -106,8 +97,10 @@ export default function HeroSection() {
       </div>
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background/30 via-background/20 to-background/40 
-                      dark:from-background/40 dark:via-background/30 dark:to-background/50 z-10 animate-pulse-slow pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br
+                      from-background/30 via-background/20 to-background/40
+                      dark:from-background/40 dark:via-background/30 dark:to-background/50
+                      z-10 animate-pulse-slow pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-20 text-center px-4 max-w-5xl mx-auto flex flex-col justify-center h-full items-center">
@@ -117,8 +110,8 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight
-                     bg-gradient-to-r from-cyan-400 via-green-300 to-purple-600 bg-clip-text text-transparent
-                     drop-shadow-md hover:drop-shadow-xl hover:scale-105 cursor-default"
+                     bg-gradient-to-r from-teal-400 via-lime-300 to-purple-500
+                     bg-clip-text text-transparent drop-shadow-md hover:drop-shadow-xl hover:scale-105 cursor-default"
         >
           Sadhana Sudha
         </motion.h1>
@@ -140,8 +133,8 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-lg md:text-xl text-white mb-4 max-w-3xl leading-relaxed drop-shadow-sm
-                     transition-all duration-300 hover:text-cyan-500"
+          className="text-lg md:text-xl text-gray-800 dark:text-gray-200 mb-4 max-w-3xl leading-relaxed drop-shadow-sm
+                     transition-all duration-300 hover:text-lime-400"
         >
           Building scalable web applications with clean code, efficient APIs, and smooth user experiences.
         </motion.p>
@@ -156,7 +149,9 @@ export default function HeroSection() {
           <Button
             size="lg"
             onClick={handleDownloadResume}
-            className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25"
+            className="px-8 py-3 bg-gradient-to-r from-cyan-400 via-green-300 to-purple-500
+                       hover:from-cyan-500 hover:via-green-400 hover:to-purple-600
+                       transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-300/25"
           >
             <Download className="mr-2 h-5 w-5" />
             Download Resume
@@ -171,9 +166,8 @@ export default function HeroSection() {
                   variant="outline"
                   size="lg"
                   asChild
-                  className="  relative z-10 border-gray-400 bg-transparent rounded-full transition-all duration-300
-                    text-white hover:text-white
-                    dark:border-gray-600 dark:text-gray-300 dark:hover:text-primary"
+                  className="relative z-10 border-gray-400 bg-transparent rounded-full transition-all duration-300
+                             text-gray-800 dark:border-gray-600 dark:text-gray-200 dark:hover:text-cyan-400"
                 >
                   <a href={href} target="_blank" rel="noopener noreferrer">
                     <Icon className="h-5 w-5" />
@@ -190,7 +184,8 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="cursor-pointer flex flex-col items-center space-y-2 text-white hover:text-cyan-400 transition-all group"
+          className="cursor-pointer flex flex-col items-center space-y-2 text-gray-800 dark:text-gray-200
+                     hover:text-cyan-400 transition-all group"
           whileHover={{ scale: 1.1 }}
         >
           <span className="text-sm uppercase tracking-wider group-hover:tracking-widest transition-all duration-300 drop-shadow-sm">

@@ -7,19 +7,19 @@ import { ChevronDown } from "lucide-react"
 
 gsap.registerPlugin(ScrollTrigger)
 
+// ------------------- Skill Data -------------------
 const skillCategories = [
   {
     title: "Frontend",
     icon: "💻",
     color: "from-blue-500 to-cyan-500",
     skills: [
-       { name: "HTML / CSS3", level: 90 },
+      { name: "HTML / CSS3", level: 90 },
       { name: "React.js / Next.js", level: 75 },
       { name: "JavaScript (ES6) / TypeScript", level: 70 },
       { name: "Tailwind CSS / Material UI", level: 85 },
       { name: "Bootstrap", level: 80 },
       { name: "Responsive Design", level: 80 },
-     
     ],
   },
   {
@@ -31,16 +31,15 @@ const skillCategories = [
       { name: "MongoDB / MySQL", level: 70 },
       { name: "REST APIs / JSON", level: 80 },
       { name: "Authentication / JWT", level: 75 },
-         ],
+    ],
   },
   {
     title: "Programming & Core",
     icon: "📚",
     color: "from-indigo-500 to-blue-500",
     skills: [
-      
-      { name: "C / Java", level: 70 },
-      { name: "Object Oriented Programming Language",level: 90},
+      { name: "C / Java / PHP", level: 70 },
+      { name: "Object Oriented Programming Language", level: 90 },
       { name: "OS Concepts / Networking", level: 60 },
       { name: "Data Structures & Algorithms", level: 80 },
       { name: "Design Patterns / Performance", level: 65 },
@@ -53,7 +52,7 @@ const skillCategories = [
     skills: [
       { name: "UI/UX Design", level: 85 },
       { name: "Figma / Canva", level: 75 },
-      { name: "GSAP", level: 70 },
+      { name: "GSAP / Three.js", level: 70 },
       { name: "Framer Motion", level: 75 },
       { name: "CSS Animations", level: 80 },
     ],
@@ -74,12 +73,35 @@ const skillCategories = [
   },
 ]
 
-function SkillCard({ category }: { category: any }) {
+// ------------------- Touch Hover Hook -------------------
+function useTouchHover() {
+  const [isTouch, setIsTouch] = useState(false)
+  const [hovered, setHovered] = useState(false)
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const touchListener = () => setIsTouch(true)
+      window.addEventListener("touchstart", touchListener, { once: true })
+      return () => window.removeEventListener("touchstart", touchListener)
+    }
+  }, [])
+
+  const toggleHover = () => {
+    if (isTouch) setHovered((prev) => !prev)
+  }
+
+  return { hovered, toggleHover }
+}
+
+// ------------------- SkillCard -------------------
+function SkillCard({ category, forceHover }: { category: any; forceHover?: boolean }) {
   const [hovered, setHovered] = useState(false)
   const [expanded, setExpanded] = useState(false)
 
+  const isHovered = hovered || forceHover
+
   useEffect(() => {
-    if (!hovered && !expanded) return
+    if (!isHovered && !expanded) return
     category.skills.forEach((skill: any, index: number) => {
       const target = { val: 0 }
       gsap.to(target, {
@@ -87,14 +109,12 @@ function SkillCard({ category }: { category: any }) {
         duration: 1,
         delay: index * 0.1,
         onUpdate: function () {
-          const el = document.getElementById(
-            `skill-num-${category.title}-${index}`
-          )
+          const el = document.getElementById(`skill-num-${category.title}-${index}`)
           if (el) el.innerText = `${Math.floor(target.val)}%`
         },
       })
     })
-  }, [hovered, expanded, category.skills, category.title])
+  }, [isHovered, expanded, category.skills, category.title])
 
   return (
     <div
@@ -102,42 +122,31 @@ function SkillCard({ category }: { category: any }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Card Icon & Title remain same */}
+      {/* Icon */}
       <div className="relative w-36 h-36 mb-4">
-        <div
-          className={`absolute inset-0 rounded-full bg-gradient-to-br ${category.color} opacity-30 blur-md transition-all duration-500`}
-        />
+        <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${category.color} opacity-30 blur-md transition-all duration-500`} />
         <div className="absolute inset-2 rounded-full bg-background/70 border border-border shadow-lg flex items-center justify-center">
           <span className="text-5xl">{category.icon}</span>
         </div>
       </div>
 
+      {/* Title */}
       <h3 className="text-lg font-semibold text-center mb-3">{category.title}</h3>
 
-      {/* Skills List */}
-      <div
-        className={`overflow-hidden transition-all duration-500 ease-in-out w-full ${
-          hovered || expanded ? "h-auto" : "h-[180px]"
-        }`}
-      >
+      {/* Skills */}
+      <div className={`overflow-hidden transition-all duration-500 ease-in-out w-full ${isHovered || expanded ? "h-auto" : "h-[180px]"}`}>
         <ul className="text-center space-y-3 px-2">
           {category.skills.map((skill: any, index: number) => (
             <li key={index} className="relative text-sm text-muted-foreground">
               {skill.name}
-              <div
-                className={`relative mt-1 h-3 bg-muted-foreground/20 rounded-full overflow-hidden transition-all duration-500 ${
-                  hovered || expanded ? "opacity-100" : "opacity-0"
-                }`}
-              >
+              <div className={`relative mt-1 h-3 bg-muted-foreground/20 rounded-full overflow-hidden transition-all duration-500 ${isHovered || expanded ? "opacity-100" : "opacity-0"}`}>
                 <div
                   className="h-3 bg-gradient-to-r from-primary to-cyan-500 rounded-full transition-all duration-700"
-                  style={{ width: hovered || expanded ? `${skill.level}%` : "0%" }}
+                  style={{ width: isHovered || expanded ? `${skill.level}%` : "0%" }}
                 />
                 <span
                   id={`skill-num-${category.title}-${index}`}
-                  className={`absolute right-2 top-0 text-xs text-white transition-opacity duration-500 ${
-                    hovered || expanded ? "opacity-100" : "opacity-0"
-                  }`}
+                  className={`absolute right-2 top-0 text-xs text-white transition-opacity duration-500 ${isHovered || expanded ? "opacity-100" : "opacity-0"}`}
                 >
                   0%
                 </span>
@@ -150,9 +159,7 @@ function SkillCard({ category }: { category: any }) {
       {/* Arrow */}
       <button
         onClick={() => setExpanded(!expanded)}
-        className={`flex items-center justify-center w-full mt-3 text-primary transition-transform duration-300 ${
-          expanded ? "rotate-180" : "rotate-0"
-        }`}
+        className={`flex items-center justify-center w-full mt-3 text-primary transition-transform duration-300 ${expanded ? "rotate-180" : "rotate-0"}`}
       >
         <ChevronDown className="w-5 h-5" />
       </button>
@@ -160,21 +167,14 @@ function SkillCard({ category }: { category: any }) {
   )
 }
 
+// ------------------- SkillsSection -------------------
 export default function SkillsSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
   const skillsGridRef = useRef<HTMLDivElement>(null)
-
   const [activeTab, setActiveTab] = useState("All")
 
-  const tabs = [
-    "All",
-    "Frontend",
-    "Backend",
-    "Programming & Core",
-    "Design & Animation",
-    "Tools",
-  ]
+  const tabs = ["All", "Frontend", "Backend", "Programming & Core", "Design & Animation", "Tools"]
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -224,7 +224,7 @@ export default function SkillsSection() {
       ref={sectionRef}
       className="py-28 px-6 bg-gradient-to-b from-background to-muted/40 relative overflow-hidden"
     >
-      {/* Decorative Background */}
+      {/* Background Decorations */}
       <div className="absolute top-10 left-20 w-72 h-72 bg-primary/30 blur-[140px] rounded-full"></div>
       <div className="absolute bottom-10 right-20 w-72 h-72 bg-cyan-400/20 blur-[140px] rounded-full"></div>
 
@@ -261,9 +261,14 @@ export default function SkillsSection() {
         >
           {skillCategories
             .filter((cat) => activeTab === "All" || activeTab === cat.title)
-            .map((category, index) => (
-              <SkillCard key={index} category={category} />
-            ))}
+            .map((category, index) => {
+              const { hovered, toggleHover } = useTouchHover()
+              return (
+                <div key={index} onClick={toggleHover}>
+                  <SkillCard category={category} forceHover={hovered} />
+                </div>
+              )
+            })}
         </div>
       </div>
     </section>
