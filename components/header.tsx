@@ -164,46 +164,49 @@ export default function Header() {
       </div>
 
       {/* Mobile menu */}
+     {/* Mobile menu */}
+<motion.div
+  className="md:hidden overflow-hidden"
+  initial={false}
+  animate={{
+    height: isMobileMenuOpen ? "auto" : 0,
+    opacity: isMobileMenuOpen ? 1 : 0,
+  }}
+  transition={{ duration: 0.5, ease: "easeInOut" }}
+>
+  <div className="bg-background/95 backdrop-blur-md border-b border-border">
+    <nav className="container mx-auto px-6 py-6 flex flex-col space-y-6">
+      {["home","about","skills","projects","contact"].map((section, index) => (
+        <motion.a
+          key={section}
+          href={`#${section}`}                 // ✅ works like desktop anchors
+          onClick={() => setIsMobileMenuOpen(false)}  // ✅ closes menu after click
+          className={`text-left capitalize ${headerTextColor} hover:text-primary transition-all duration-300`}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: isMobileMenuOpen ? 1 : 0, x: isMobileMenuOpen ? 0 : -50 }}
+          transition={{ duration: 0.3, delay: index * 0.1 }}
+          whileHover={{ x: 8 }}
+        >
+          {section}
+        </motion.a>
+      ))}
       <motion.div
-        className="md:hidden overflow-hidden"
-        initial={false}
-        animate={{
-          height: isMobileMenuOpen ? "auto" : 0,
-          opacity: isMobileMenuOpen ? 1 : 0,
-        }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: isMobileMenuOpen ? 1 : 0, x: isMobileMenuOpen ? 0 : -50 }}
+        transition={{ duration: 0.3, delay: 0.5 }}
       >
-        <div className="bg-background/95 backdrop-blur-md border-b border-border">
-          <nav className="container mx-auto px-6 py-6 flex flex-col space-y-6">
-            {["home","about","skills","projects","contact"].map((section, index) => (
-              <motion.button
-                key={section}
-                onClick={() => scrollToSection(section)}
-                className={`text-left capitalize ${headerTextColor} hover:text-primary transition-all duration-300`}
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: isMobileMenuOpen ? 1 : 0, x: isMobileMenuOpen ? 0 : -50 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-                whileHover={{ x: 8 }}
-              >
-                {section}
-              </motion.button>
-            ))}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: isMobileMenuOpen ? 1 : 0, x: isMobileMenuOpen ? 0 : -50 }}
-              transition={{ duration: 0.3, delay: 0.5 }}
-            >
-              <Button
-                onClick={handleDownloadResume}
-                className="flex items-center space-x-2 w-fit hover:scale-105 transition-transform duration-300"
-              >
-                <Download className="h-4 w-4" />
-                <span>Resume</span>
-              </Button>
-            </motion.div>
-          </nav>
-        </div>
+        <Button
+          onClick={handleDownloadResume}
+          className="flex items-center space-x-2 w-fit hover:scale-105 transition-transform duration-300"
+        >
+          <Download className="h-4 w-4" />
+          <span>Resume</span>
+        </Button>
       </motion.div>
+    </nav>
+  </div>
+</motion.div>
+
     </motion.header>
   )
 }

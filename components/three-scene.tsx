@@ -1,6 +1,6 @@
 "use client"
 
-import { Suspense, useMemo, useRef } from "react"
+import { Suspense, useMemo, useRef, useEffect, useState } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
 import { OrbitControls, Environment, Box, Text } from "@react-three/drei"
 import type * as THREE from "three"
@@ -273,22 +273,35 @@ function FloatingSymbols() {
 
 // ---------------- Scene Content ----------------
 function SceneContent() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768) // Tailwind md breakpoint
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
   return (
     <>
       <ambientLight intensity={0.3} />
       <pointLight position={[10, 10, 10]} intensity={0.6} color="#0891b2" />
       <pointLight position={[-10, -10, -10]} intensity={0.4} color="#22d3ee" />
       <directionalLight position={[0, 5, 5]} intensity={0.5} />
+
       <EnhancedParticles />
       <FloatingStars />
       <ReactCubes />
       <FloatingWireframes />
       <FloatingSymbols />
+
       <Environment preset="city" />
+
       <OrbitControls
         enableZoom={false}
         enablePan={false}
-        autoRotate
+        enableRotate={true}
+        autoRotate={!isMobile}      // ✅ desktop rotates automatically
         autoRotateSpeed={0.3}
         maxPolarAngle={Math.PI / 1.8}
         minPolarAngle={Math.PI / 2.2}
@@ -301,8 +314,11 @@ function SceneContent() {
 export default function ThreeScene() {
   return (
     <div className="w-full h-screen">
-      <Canvas camera={{ position: [0, 0, 8], fov: 45 }} gl={{ antialias: true, alpha: true }} dpr={[1, 1.5]}>
-        
+      <Canvas
+        camera={{ position: [0, 0, 8], fov: 45 }}
+        gl={{ antialias: true, alpha: true }}
+        dpr={[1, 1.5]}
+      >
         <Suspense fallback={null}>
           <SceneContent />
         </Suspense>
