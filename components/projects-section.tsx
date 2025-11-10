@@ -17,41 +17,44 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger)
 
 const projects = [
-{
-  title: "Jobsewa Job Portal",
-  description:
-    "A comprehensive job portal for job seekers and recruiters, featuring job listings, applications, and user profiles. Uses TF-IDF and Cosine Similarity to recommend jobs based on resume–job description matching.",
-  image: "/image.png",
-  tech: ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB","Vercel", "TF-IDF", "Cosine Similarity"],
-  github: "https://github.com/sadhana8/Jobsewa-jobportal",
-  live: "https://jobsewa-jobportal-five.vercel.app/",
-}
+  {
+    title: "Jobsewa Job Portal",
+    description:
+      "A comprehensive job portal for job seekers and recruiters, featuring job listings, applications, and user profiles. Uses TF-IDF and Cosine Similarity to recommend jobs based on resume–job description matching.",
+    image: "/image.png",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB", "Vercel", "TF-IDF", "Cosine Similarity"],
+    github: "https://github.com/sadhana8/Jobsewa-jobportal",
+    live: "https://jobsewa-jobportal-five.vercel.app/",
+  },
 
-  // {
-  //   title: "3D Portfolio Website",
-  //   description: "Interactive portfolio built with Three.js and GSAP animations",
-  //   image: "/3d-portfolio-website.png",
-  //   tech: ["Three.js", "React", "GSAP", "WebGL"],
-  //   github: "#",
-  //   live: "#",
-  // },
-  // {
-  //   title: "AI Chat Application",
-  //   description: "Real-time chat app with AI integration and modern UI",
-  //   image: "/ai-chat-application.png",
-  //   tech: ["Next.js", "OpenAI", "Socket.io", "Tailwind"],
-  //   github: "#",
-  //   live: "#",
-  // },
-  // {
-  //   title: "Data Visualization Dashboard",
-  //   description:
-  //     "Interactive dashboard for complex data analysis and visualization",
-  //   image: "/data-dashboard.png",
-  //   tech: ["D3.js", "React", "Python", "FastAPI"],
-  //   github: "#",
-  //   live: "#",
-  // },
+  {
+    title: "Storedoor E-commerce Website",
+    description:
+      "A feature-rich e-commerce platform built with Next.js and Sanity CMS, offering smooth product management, secure Stripe payments, and user authentication powered by Clerk. Designed for fast performance and an intuitive shopping experience.",
+    image: "/image2.png",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Sanity CMS", "Stripe", "Vercel", "Clerk"],
+    github: "https://github.com/sadhana8/e-commerce",
+    live: "https://e-commerce-six-kappa-57.vercel.app/",
+  },
+
+  {
+    title: "ResyGo Restuarent Reservation System",
+    description:
+      "ResyGo is a modern restaurant reservation system that allows users to easily book tables, view availability, and manage reservations in real-time. Built with the MERN stack and styled with Tailwind CSS, it provides a seamless and responsive user experience for both diners and restaurant owners",
+    image: "/",
+    tech: ["MongoDB", "Express.js", "React", "Node.js", "Tailwind CSS"],
+    github: "",
+    live: "#",
+  },
+  {
+    title: "Quick Chat MERN Application",
+    description:
+      "A real-time chat platform built with the MERN stack, featuring instant messaging, user authentication, and a sleek modern UI.",
+    image: "/quick-chat.png",
+    tech: ["MongoDB", "Express.js", "React", "Node.js", "Socket.io", "Tailwind CSS"],
+    github: "https://github.com/sadhana8/QuickChat-MERN-App",
+    live: "#",
+  },
 ]
 
 export default function ProjectsSection() {
@@ -131,7 +134,7 @@ export default function ProjectsSection() {
                 </CardHeader>
 
                 <CardContent>
-                  {/* Tech stack tags with subtle floating animation */}
+                  {/* Tech stack tags */}
                   <motion.div
                     className="flex flex-wrap gap-2 mb-4"
                     initial="hidden"
@@ -204,6 +207,39 @@ export default function ProjectsSection() {
             </motion.div>
           ))}
         </div>
+
+        {/* More Projects Button */}
+        <motion.div
+          className="flex justify-center mt-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <Button
+            size="lg"
+            asChild
+            className="relative overflow-hidden group/btn rounded-full px-8 py-5 text-lg font-medium"
+          >
+            <a
+              href="https://github.com/sadhana8?tab=repositories"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2"
+            >
+              <Github className="h-5 w-5" />
+              <span>View More Projects</span>
+
+              {/* Animated Glow Effect */}
+              <span className="absolute inset-0 bg-gradient-to-r from-primary/30 via-purple-500/30 to-cyan-400/30 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500" />
+              <motion.span
+                className="absolute inset-0 bg-gradient-to-r from-primary via-purple-500 to-cyan-400 opacity-30 blur-lg rounded-full"
+                animate={{ opacity: [0.3, 0.6, 0.3] }}
+                transition={{ duration: 3, repeat: Infinity, repeatType: "mirror" }}
+              />
+            </a>
+          </Button>
+        </motion.div>
       </div>
     </section>
   )

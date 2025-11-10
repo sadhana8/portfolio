@@ -31,8 +31,8 @@ const skillCategories = [
       { name: "MongoDB / MySQL / Firebase", level: 70 },
       { name: "REST APIs / JSON", level: 80 },
       { name: "Authentication / JWT", level: 75 },
-      { name: "Websocket.io / Leaflet.js", level: 60 },
-    ],
+      { name: "Websocket.io / Leaflet.js" , level: 60 },
+      ],
   },
   {
     title: "Programming & Core",
@@ -99,11 +99,10 @@ function SkillCard({ category, forceHover }: { category: any; forceHover?: boole
   const [hovered, setHovered] = useState(false)
   const [expanded, setExpanded] = useState(false)
 
-  const isHovered = hovered || forceHover || expanded
+  const isHovered = hovered || forceHover
 
-  // Animate skill bars when visible
   useEffect(() => {
-    if (!isHovered) return
+    if (!isHovered && !expanded) return
     category.skills.forEach((skill: any, index: number) => {
       const target = { val: 0 }
       gsap.to(target, {
@@ -116,20 +115,17 @@ function SkillCard({ category, forceHover }: { category: any; forceHover?: boole
         },
       })
     })
-  }, [isHovered, category.skills, category.title])
+  }, [isHovered, expanded, category.skills, category.title])
 
   return (
     <div
-      className="group relative transition-transform duration-500 flex flex-col items-center cursor-pointer"
+      className="group relative transition-transform duration-500 flex flex-col items-center"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onClick={() => setExpanded(!expanded)} // ✅ mobile tap expands
     >
       {/* Icon */}
       <div className="relative w-36 h-36 mb-4">
-        <div
-          className={`absolute inset-0 rounded-full bg-gradient-to-br ${category.color} opacity-30 blur-md transition-all duration-500`}
-        />
+        <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${category.color} opacity-30 blur-md transition-all duration-500`} />
         <div className="absolute inset-2 rounded-full bg-background/70 border border-border shadow-lg flex items-center justify-center">
           <span className="text-5xl">{category.icon}</span>
         </div>
@@ -139,29 +135,19 @@ function SkillCard({ category, forceHover }: { category: any; forceHover?: boole
       <h3 className="text-lg font-semibold text-center mb-3">{category.title}</h3>
 
       {/* Skills */}
-      <div
-        className={`overflow-hidden transition-all duration-500 ease-in-out w-full ${
-          isHovered ? "h-auto" : "h-[180px]"
-        }`}
-      >
+      <div className={`overflow-hidden transition-all duration-500 ease-in-out w-full ${isHovered || expanded ? "h-auto" : "h-[180px]"}`}>
         <ul className="text-center space-y-3 px-2">
           {category.skills.map((skill: any, index: number) => (
             <li key={index} className="relative text-sm text-muted-foreground">
               {skill.name}
-              <div
-                className={`relative mt-1 h-3 bg-muted-foreground/20 rounded-full overflow-hidden transition-all duration-500 ${
-                  isHovered ? "opacity-100" : "opacity-0"
-                }`}
-              >
+              <div className={`relative mt-1 h-3 bg-muted-foreground/20 rounded-full overflow-hidden transition-all duration-500 ${isHovered || expanded ? "opacity-100" : "opacity-0"}`}>
                 <div
                   className="h-3 bg-gradient-to-r from-primary to-cyan-500 rounded-full transition-all duration-700"
-                  style={{ width: isHovered ? `${skill.level}%` : "0%" }}
+                  style={{ width: isHovered || expanded ? `${skill.level}%` : "0%" }}
                 />
                 <span
                   id={`skill-num-${category.title}-${index}`}
-                  className={`absolute right-2 top-0 text-xs text-white transition-opacity duration-500 ${
-                    isHovered ? "opacity-100" : "opacity-0"
-                  }`}
+                  className={`absolute right-2 top-0 text-xs text-white transition-opacity duration-500 ${isHovered || expanded ? "opacity-100" : "opacity-0"}`}
                 >
                   0%
                 </span>
@@ -172,13 +158,12 @@ function SkillCard({ category, forceHover }: { category: any; forceHover?: boole
       </div>
 
       {/* Arrow */}
-      <div
-        className={`flex items-center justify-center w-full mt-3 text-primary transition-transform duration-300 ${
-          expanded ? "rotate-180" : "rotate-0"
-        }`}
+      <button
+        onClick={() => setExpanded(!expanded)}
+        className={`flex items-center justify-center w-full mt-3 text-primary transition-transform duration-300 ${expanded ? "rotate-180" : "rotate-0"}`}
       >
         <ChevronDown className="w-5 h-5" />
-      </div>
+      </button>
     </div>
   )
 }

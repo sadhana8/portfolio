@@ -35,7 +35,7 @@ export default function Header() {
 
   const handleDownloadResume = () => {
     const link = document.createElement("a")
-    link.href = "/resume-document.png"
+    link.href = "/resume.pdf"
     link.download = "resume.pdf"
     link.click()
   }
@@ -95,7 +95,7 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className={`hidden md:flex text-xl items-center space-x-10 ${headerTextColor}`}>
-          {["home","about","skills","projects","contact"].map((section, index) => (
+          {["home", "about", "skills", "projects", "contact"].map((section, index) => (
             <motion.button
               key={section}
               onClick={() => scrollToSection(section)}
@@ -132,6 +132,19 @@ export default function Header() {
               <Download className="h-4 w-4" />
               <span>Resume</span>
             </Button>
+            {/* <Button
+              asChild
+              className="flex items-center space-x-2 w-fit hover:scale-105 transition-transform duration-300"
+            >
+              <a
+                href="/flip-resume/index.html" // 👈 link to your flip resume HTML file
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>Resume</span>
+              </a>
+            </Button> */}
+
           </motion.div>
 
           {/* Theme toggle */}
@@ -164,48 +177,61 @@ export default function Header() {
       </div>
 
       {/* Mobile menu */}
-     {/* Mobile menu */}
-<motion.div
-  className="md:hidden overflow-hidden"
-  initial={false}
-  animate={{
-    height: isMobileMenuOpen ? "auto" : 0,
-    opacity: isMobileMenuOpen ? 1 : 0,
-  }}
-  transition={{ duration: 0.5, ease: "easeInOut" }}
->
-  <div className="bg-background/95 backdrop-blur-md border-b border-border">
-    <nav className="container mx-auto px-6 py-6 flex flex-col space-y-6">
-      {["home","about","skills","projects","contact"].map((section, index) => (
-        <motion.a
-          key={section}
-          href={`#${section}`}                 // ✅ works like desktop anchors
-          onClick={() => setIsMobileMenuOpen(false)}  // ✅ closes menu after click
-          className={`text-left capitalize ${headerTextColor} hover:text-primary transition-all duration-300`}
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: isMobileMenuOpen ? 1 : 0, x: isMobileMenuOpen ? 0 : -50 }}
-          transition={{ duration: 0.3, delay: index * 0.1 }}
-          whileHover={{ x: 8 }}
-        >
-          {section}
-        </motion.a>
-      ))}
+      {/* Mobile menu */}
       <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: isMobileMenuOpen ? 1 : 0, x: isMobileMenuOpen ? 0 : -50 }}
-        transition={{ duration: 0.3, delay: 0.5 }}
+        className="md:hidden overflow-hidden"
+        initial={false}
+        animate={{
+          height: isMobileMenuOpen ? "auto" : 0,
+          opacity: isMobileMenuOpen ? 1 : 0,
+        }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
       >
-        <Button
+        <div className="bg-background/95 backdrop-blur-md border-b border-border">
+          <nav className="container mx-auto px-6 py-6 flex flex-col space-y-6">
+            {["home", "about", "skills", "projects", "contact"].map((section, index) => (
+              <motion.a
+                key={section}
+                href={`#${section}`}                 // ✅ works like desktop anchors
+                onClick={() => setIsMobileMenuOpen(false)}  // ✅ closes menu after click
+                className={`text-left capitalize ${headerTextColor} hover:text-primary transition-all duration-300`}
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: isMobileMenuOpen ? 1 : 0, x: isMobileMenuOpen ? 0 : -50 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                whileHover={{ x: 8 }}
+              >
+                {section}
+              </motion.a>
+            ))}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: isMobileMenuOpen ? 1 : 0, x: isMobileMenuOpen ? 0 : -50 }}
+              transition={{ duration: 0.3, delay: 0.5 }}
+            >
+              <Button
           onClick={handleDownloadResume}
           className="flex items-center space-x-2 w-fit hover:scale-105 transition-transform duration-300"
         >
           <Download className="h-4 w-4" />
           <span>Resume</span>
         </Button>
+              {/* <Button
+                asChild
+                className="flex items-center space-x-2 w-fit hover:scale-105 transition-transform duration-300"
+              >
+                <a
+                  href="/flip-resume/index.html" // 👈 link to your flip resume HTML file
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>Resume</span>
+                </a>
+              </Button> */}
+
+            </motion.div>
+          </nav>
+        </div>
       </motion.div>
-    </nav>
-  </div>
-</motion.div>
 
     </motion.header>
   )
