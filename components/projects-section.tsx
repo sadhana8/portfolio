@@ -53,7 +53,7 @@ const projects = [
     image: "/quick-chat.png",
     tech: ["MongoDB", "Express.js", "React", "Node.js", "Socket.io", "Tailwind CSS"],
     github: "https://github.com/sadhana8/QuickChat-MERN-App",
-    live: "https://quick-chat-pearl.vercel.app/login",
+    live: "https://quick-chat-pearl.vercel.app",
   },
 ]
 
