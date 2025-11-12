@@ -41,10 +41,10 @@ const projects = [
     title: "ResyGo Restuarent Reservation System",
     description:
       "ResyGo is a modern restaurant reservation system that allows users to easily book tables, view availability, and manage reservations in real-time. Built with the MERN stack and styled with Tailwind CSS, it provides a seamless and responsive user experience for both diners and restaurant owners",
-    image: "/",
+    image: "/resygo.png",
     tech: ["MongoDB", "Express.js", "React", "Node.js", "Tailwind CSS"],
-    github: "",
-    live: "#",
+    github: "https://github.com/sadhana8/Resygo-mernapp",
+    // live: "#",
   },
   {
     title: "Quick Chat MERN Application",
@@ -53,7 +53,7 @@ const projects = [
     image: "/quick-chat.png",
     tech: ["MongoDB", "Express.js", "React", "Node.js", "Socket.io", "Tailwind CSS"],
     github: "https://github.com/sadhana8/QuickChat-MERN-App",
-    live: "https://quick-chat-pearl.vercel.app",
+    live: "https://quick-chatapp.vercel.app/",
   },
 ]
 
