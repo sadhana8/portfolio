@@ -75,7 +75,7 @@ export default function Footer() {
     { icon: Github, url: "https://github.com/sadhana8" },
     { icon: Linkedin, url: "https://www.linkedin.com/in/sadhanasudha/" },
     { icon: Youtube, url: "www.youtube.com/@CodlerOfficial" },
-    { icon: Mail, url: "sadhanasudha003@gmail.com" },
+    { icon: Mail, url: "sudhasadhana7@gmail.com" },
   ]
 
   return (
