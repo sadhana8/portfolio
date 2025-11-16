@@ -132,14 +132,14 @@ export default function AboutSection() {
                 <div className="absolute inset-0 border-2 border-white/10 rounded-2xl pointer-events-none"></div>
                 <div className="w-full h-full rounded-2xl overflow-hidden bg-background/90 border border-white/20">
                   <Image
-                    src="/about.jpg"
+                    src="./about.jpg"
                     alt="Developer Portrait"
                     width={320}
                     height={480}
                     className="w-full h-full object-cover rounded-2xl"
                     loading="lazy"
                     placeholder="blur"
-                    blurDataURL="/about-blur.jpg" // optional small placeholder image
+                    blurDataURL="/about.jpg" // optional small placeholder image
                   />
                 </div>
               </div>
