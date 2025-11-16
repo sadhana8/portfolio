@@ -35,8 +35,8 @@ export default function Header() {
 
   const handleDownloadResume = () => {
     const link = document.createElement("a")
-    link.href = "/resume.pdf"
-    link.download = "resume.pdf"
+    link.href = "/resume2.pdf"
+    link.download = "resume2.pdf"
     link.click()
   }
 

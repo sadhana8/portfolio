@@ -67,8 +67,8 @@ export default function HeroSection() {
   const handleDownloadResume = () => {
     try {
       const link = document.createElement("a")
-      link.href = "/resume.pdf"
-      link.download = "resume.pdf"
+      link.href = "/resume2.pdf"
+      link.download = "resume2.pdf"
       document.body.appendChild(link)
       link.click()
       document.body.removeChild(link)
