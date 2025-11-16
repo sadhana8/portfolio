@@ -139,7 +139,7 @@ export default function AboutSection() {
                     className="w-full h-full object-cover rounded-2xl"
                     loading="lazy"
                     placeholder="blur"
-                    blurDataURL="/about.jpg" // optional small placeholder image
+                    // blurDataURL="/about.jpg" // optional small placeholder image
                   />
                 </div>
               </div>
