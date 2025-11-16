@@ -41,8 +41,7 @@ function EnhancedParticles() {
           attach="attributes-position"
           count={200}
           array={particlesPosition}
-          itemSize={3}
-        />
+          itemSize={3} args={[]}        />
       </bufferGeometry>
       <pointsMaterial size={0.02} color="#61dafb" transparent opacity={0.5} />
     </points>
@@ -85,8 +84,7 @@ function FloatingStars() {
           attach="attributes-position"
           count={150}
           array={starsPosition}
-          itemSize={3}
-        />
+          itemSize={3} args={[]}        />
       </bufferGeometry>
       <pointsMaterial size={0.03} color="#ffffff" transparent opacity={0.4} />
     </points>

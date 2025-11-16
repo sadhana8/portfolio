@@ -196,7 +196,7 @@ export default function HeroSection() {
           <div className="flex space-x-3">
             {[{ Icon: Github, href: "https://github.com" },
               { Icon: Linkedin, href: "https://linkedin.com" },
-              { Icon: Mail, href: "mailto:contact@example.com" }].map(({ Icon, href }, i) => (
+              { Icon: Mail, href: "sudhasadhana7@gmail.com" }].map(({ Icon, href }, i) => (
               <Button
                 key={i}
                 variant="outline"
