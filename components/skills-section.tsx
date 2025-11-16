@@ -31,8 +31,8 @@ const skillCategories = [
       { name: "MongoDB / MySQL / Firebase", level: 70 },
       { name: "REST APIs / JSON", level: 80 },
       { name: "Authentication / JWT", level: 75 },
-      { name: "Websocket.io / Leaflet.js" , level: 60 },
-      ],
+      { name: "Websocket.io / Leaflet.js", level: 60 },
+    ],
   },
   {
     title: "Programming & Core",
@@ -140,14 +140,20 @@ function SkillCard({ category, forceHover }: { category: any; forceHover?: boole
           {category.skills.map((skill: any, index: number) => (
             <li key={index} className="relative text-sm text-muted-foreground">
               {skill.name}
-              <div className={`relative mt-1 h-3 bg-muted-foreground/20 rounded-full overflow-hidden transition-all duration-500 ${isHovered || expanded ? "opacity-100" : "opacity-0"}`}>
+              <div
+                className={`relative mt-1 h-3 bg-muted-foreground/20 rounded-full overflow-hidden transition-all duration-500 ${
+                  isHovered || expanded ? "opacity-100" : "opacity-0"
+                }`}
+              >
                 <div
                   className="h-3 bg-gradient-to-r from-primary to-cyan-500 rounded-full transition-all duration-700"
                   style={{ width: isHovered || expanded ? `${skill.level}%` : "0%" }}
                 />
                 <span
                   id={`skill-num-${category.title}-${index}`}
-                  className={`absolute right-2 top-0 text-xs text-white transition-opacity duration-500 ${isHovered || expanded ? "opacity-100" : "opacity-0"}`}
+                  className={`absolute right-2 top-0 text-xs text-white transition-opacity duration-500 ${
+                    isHovered || expanded ? "opacity-100" : "opacity-0"
+                  }`}
                 >
                   0%
                 </span>
@@ -160,7 +166,9 @@ function SkillCard({ category, forceHover }: { category: any; forceHover?: boole
       {/* Arrow */}
       <button
         onClick={() => setExpanded(!expanded)}
-        className={`flex items-center justify-center w-full mt-3 text-primary transition-transform duration-300 ${expanded ? "rotate-180" : "rotate-0"}`}
+        className={`flex items-center justify-center w-full mt-3 text-primary transition-transform duration-300 ${
+          expanded ? "rotate-180" : "rotate-0"
+        }`}
       >
         <ChevronDown className="w-5 h-5" />
       </button>
@@ -174,10 +182,22 @@ export default function SkillsSection() {
   const titleRef = useRef<HTMLHeadingElement>(null)
   const skillsGridRef = useRef<HTMLDivElement>(null)
   const [activeTab, setActiveTab] = useState("All")
+  const [isMobile, setIsMobile] = useState(false)
 
   const tabs = ["All", "Frontend", "Backend", "Programming & Core", "Design & Animation", "Tools"]
 
+  // Detect mobile devices
   useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
+  // GSAP Animations – Disabled on Mobile
+  useEffect(() => {
+    if (isMobile) return // disable animations on mobile
+
     const ctx = gsap.context(() => {
       gsap.fromTo(
         titleRef.current,
@@ -217,7 +237,7 @@ export default function SkillsSection() {
     }, sectionRef)
 
     return () => ctx.revert()
-  }, [])
+  }, [isMobile])
 
   return (
     <section

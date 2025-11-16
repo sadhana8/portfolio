@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ChevronDown, ChevronUp } from "lucide-react"
+import Image from "next/image"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -49,34 +50,42 @@ export default function AboutSection() {
       affiliation: "Tribhuvan University",
       duration: "Running",
       grade: "A",
-      activities: "Web Development, Database Management, Software Engineering, Networking, college projects, mini MERN & Next.js apps, version control, coding challenges, tech workshops, enhancing practical skills and industry knowledge."
+      activities:
+        "Web Development, Database Management, Software Engineering, Networking, college projects, mini MERN & Next.js apps, version control, coding challenges, tech workshops, enhancing practical skills and industry knowledge."
     },
     {
       id: "technical",
-      title: "Technical & Vocational Education on Computer Engineering(Class 9-12)",
+      title: "Technical & Vocational Education on Computer Engineering (Class 9–12)",
       institution: "Shree Yagyabalkya Sanskrit Secondary School, Dhanusha",
       affiliation: "National Examination Board",
       duration: "2016 - 2021",
       grade: "A",
-      activities: "Computer Engineering, programming (C, C++, Java, HTML), database management, electronics & hardware labs, IT workshops, hands-on projects, practical skills in computer systems and software development and OJT training."
+      activities:
+        "Computer Engineering, programming (C, C++, Java, HTML), database management, electronics & hardware labs, IT workshops, hands-on projects, practical skills in computer systems and software development, and OJT training."
     }
   ]
 
   const handleCardClick = (id: string) => {
-    // On touch devices, toggle card details on tap
     if (activeCard === id) setActiveCard(null)
     else setActiveCard(id)
   }
 
   return (
-    <section id="about" ref={sectionRef} className="relative py-16 px-4 sm:px-6 bg-gradient-to-b from-background via-muted/30 to-background overflow-hidden">
+    <section
+      id="about"
+      ref={sectionRef}
+      className="relative py-16 px-4 sm:px-6 bg-gradient-to-b from-background via-muted/30 to-background overflow-hidden"
+    >
       {/* Neon Background Circles */}
       <div className="absolute -top-20 -left-20 w-52 sm:w-72 h-52 sm:h-72 bg-primary/20 blur-3xl rounded-full" />
       <div className="absolute -bottom-20 -right-20 w-52 sm:w-72 h-52 sm:h-72 bg-primary/10 blur-3xl rounded-full" />
 
       <div className="container mx-auto max-w-7xl relative z-10">
         {/* Title */}
-        <h2 ref={titleRef} className="text-2xl sm:text-3xl md:text-5xl font-bold text-center mb-12 sm:mb-16 leading-tight">
+        <h2
+          ref={titleRef}
+          className="text-2xl sm:text-3xl md:text-5xl font-bold text-center mb-12 sm:mb-16 leading-tight"
+        >
           About Me
           <span className="block w-16 sm:w-20 h-1 bg-primary mx-auto mt-3 rounded-full"></span>
         </h2>
@@ -86,36 +95,51 @@ export default function AboutSection() {
           <div ref={contentRef}>
             <Card className="bg-gradient-to-br from-background via-muted/20 to-background border border-white/10 shadow-xl rounded-2xl transition duration-500">
               <CardContent className="p-8 sm:p-12">
-                <p className={`text-base sm:text-lg mb-4 text-muted-foreground ${!readMore ? "line-clamp-6" : ""}`}>
-                  Hello! I'm <span className="text-primary font-semibold">Sadhana</span>, a <span className="text-primary font-semibold">Full-Stack Developer</span> focused on <span className="text-primary font-semibold">backend technologies</span>. I build scalable web applications using Node.js, Express.js, and MongoDB. I enjoy designing APIs, managing databases, and creating backend systems that work smoothly and reliably.
+                <p
+                  className={`text-base sm:text-lg mb-4 text-muted-foreground ${
+                    !readMore ? "line-clamp-6" : ""
+                  }`}
+                >
+                  Hello! I'm{" "}
+                  <span className="text-primary font-semibold">Sadhana</span>, a{" "}
+                  <span className="text-primary font-semibold">Full-Stack Developer</span> focused on{" "}
+                  <span className="text-primary font-semibold">backend technologies</span>. I build scalable web applications using Node.js, Express.js, and MongoDB. I enjoy designing APIs, managing databases, and creating backend systems that work smoothly and reliably.
                   <br />
-                  During my studies, I completed a <span className="text-primary font-semibold">BCA in Computer Applications</span> at Everest College, Kathmandu, and a <span className="text-primary font-semibold">Diploma in Computer Engineering</span> from Shree Yagyabalkya Sanskrit Secondary School. I gained practical experience through college projects, mini MERN & Next.js apps, open-source contributions, and OJT training. I also participated in coding challenges, tech workshops, and online developer communities.
+                  During my studies, I completed a{" "}
+                  <span className="text-primary font-semibold">BCA in Computer Applications</span> at Everest College, Kathmandu, and a{" "}
+                  <span className="text-primary font-semibold">Diploma in Computer Engineering</span> from Shree Yagyabalkya Sanskrit Secondary School. I gained practical experience through college projects, mini MERN & Next.js apps, open-source contributions, and OJT training. I also participated in coding challenges, tech workshops, and online developer communities.
                   <br />
-                  Additionally, I am enrolled in <span className="text-primary font-semibold">Tribhuvan University</span>.
+                  Additionally, I am enrolled in{" "}
+                  <span className="text-primary font-semibold">Tribhuvan University</span>.
                 </p>
 
                 <button
                   onClick={() => setReadMore(!readMore)}
                   className="flex items-center gap-2 text-primary font-semibold mt-2 hover:underline"
                 >
-                  {readMore ? "Show Less" : "Read More"} {readMore ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                  {readMore ? "Show Less" : "Read More"}{" "}
+                  {readMore ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                 </button>
               </CardContent>
             </Card>
           </div>
 
-          {/* Image */}
+          {/* Image Section with Next.js Lazy Loading */}
           <div ref={imageRef} className="flex justify-center relative mt-8 lg:mt-0">
             <div className="relative group w-64 sm:w-80 h-96 sm:h-120">
               <div className="absolute inset-0 rounded-2xl blur-2xl sm:blur-3xl bg-gradient-to-tr from-blue-500 via-purple-500 to-pink-500 opacity-30 group-hover:opacity-60 transition duration-700"></div>
               <div className="relative w-full h-full rounded-2xl p-1 bg-gradient-to-tr from-primary/40 via-blue-500/40 to-purple-500/40 backdrop-blur-md shadow-[0_8px_40px_rgb(0,0,0,0.4)] group-hover:scale-105 transform transition duration-500">
                 <div className="absolute inset-0 border-2 border-white/10 rounded-2xl pointer-events-none"></div>
                 <div className="w-full h-full rounded-2xl overflow-hidden bg-background/90 border border-white/20">
-                  <img
+                  <Image
                     src="/about.jpg"
                     alt="Developer Portrait"
+                    width={320}
+                    height={480}
                     className="w-full h-full object-cover rounded-2xl"
                     loading="lazy"
+                    placeholder="blur"
+                    blurDataURL="/about-blur.jpg" // optional small placeholder image
                   />
                 </div>
               </div>
