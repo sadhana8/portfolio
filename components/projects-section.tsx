@@ -42,7 +42,7 @@ const projects = [
     image: "/resygo.png",
     tech: ["MongoDB", "Express.js", "React", "Node.js", "Tailwind CSS"],
     github: "https://github.com/sadhana8/Resygo-mernapp",
-    Status:" Working",
+    Status: " Working",
   },
   {
     title: "Quick Chat MERN Application",
