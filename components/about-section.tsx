@@ -74,7 +74,7 @@ export default function AboutSection() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative py-16 px-4 sm:px-6 bg-gradient-to-b from-background via-muted/30 to-background overflow-hidden"
+      className="relative py-16 px-4 sm:px-6 bg-linear-to-b from-background via-muted/30 to-background overflow-hidden"
     >
       {/* Neon Background Circles */}
       <div className="absolute -top-20 -left-20 w-52 sm:w-72 h-52 sm:h-72 bg-primary/20 blur-3xl rounded-full" />
@@ -127,7 +127,7 @@ export default function AboutSection() {
           {/* Image Section with Next.js Lazy Loading */}
           <div ref={imageRef} className="flex justify-center relative mt-8 lg:mt-0">
             <div className="relative group w-64 sm:w-80 h-96 sm:h-120">
-              <div className="absolute inset-0 rounded-2xl blur-2xl sm:blur-3xl bg-gradient-to-tr from-blue-500 via-purple-500 to-pink-500 opacity-30 group-hover:opacity-60 transition duration-700"></div>
+              <div className="absolute inset-0 rounded-2xl blur-2xl sm:blur-3xl bg-linear-to-tr from-blue-500 via-purple-500 to-pink-500 opacity-30 group-hover:opacity-60 transition duration-700"></div>
               <div className="relative w-full h-full rounded-2xl p-1 bg-gradient-to-tr from-primary/40 via-blue-500/40 to-purple-500/40 backdrop-blur-md shadow-[0_8px_40px_rgb(0,0,0,0.4)] group-hover:scale-105 transform transition duration-500">
                 <div className="absolute inset-0 border-2 border-white/10 rounded-2xl pointer-events-none"></div>
                 <div className="w-full h-full rounded-2xl overflow-hidden bg-background/90 border border-white/20">
@@ -144,7 +144,7 @@ export default function AboutSection() {
                 </div>
               </div>
               <div className="absolute inset-0 rounded-2xl border-2 border-blue-400/50 shadow-[0_0_25px_rgba(59,130,246,0.6)] pointer-events-none animate-[pulseFrame_3s_ease-in-out_infinite]"></div>
-              <div className="absolute -top-2 -left-4 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full animate-bounce-slow"></div>
+              <div className="absolute -top-2 -left-4 w-6 h-6 sm:w-8 sm:h-8 bg-linear-to-br from-purple-400 to-pink-400 rounded-full animate-bounce-slow"></div>
               <div className="absolute -bottom-4 -right-6 w-4 h-4 sm:w-6 sm:h-6 bg-gradient-to-tr from-cyan-400 to-blue-500 rounded-full animate-spin-slow"></div>
               <div className="absolute top-1/2 -right-8 w-4 h-4 bg-orange-200 rounded-full animate-bounce-slow"></div>
             </div>
