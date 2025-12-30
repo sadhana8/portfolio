@@ -95,18 +95,18 @@ export default function HeroSection() {
     return () => window.removeEventListener("resize", checkMobile)
   }, [])
 
-  const handleDownloadResume = () => {
-    try {
-      const link = document.createElement("a")
-      link.href = "/resume2.pdf"
-      link.download = "resume2.pdf"
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-    } catch (error) {
-      console.error("Resume download failed:", error)
-    }
-  }
+  // const handleDownloadResume = () => {
+  //   try {
+  //     const link = document.createElement("a")
+  //     // link.href = "/resume2.pdf"
+  //     link.download = "resume2.pdf"
+  //     document.body.appendChild(link)
+  //     link.click()
+  //     document.body.removeChild(link)
+  //   } catch (error) {
+  //     console.error("Resume download failed:", error)
+  //   }
+  // }
 
   const scrollToNext = () => {
     const nextSection = document.getElementById("projects")
@@ -182,7 +182,7 @@ export default function HeroSection() {
 
         {/* Buttons & Socials */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8 mb-12">
-          <Button
+          {/* <Button
             size="lg"
             onClick={handleDownloadResume}
             className="px-8 py-3 bg-gradient-to-r from-cyan-400 via-green-300 to-purple-500
@@ -191,7 +191,7 @@ export default function HeroSection() {
           >
             <Download className="mr-2 h-5 w-5" />
             Download Resume
-          </Button>
+          </Button> */}
 
           <div className="flex space-x-3">
             {[{ Icon: Github, href: "https://github.com" },

@@ -33,12 +33,12 @@ export default function Header() {
   const headerBlur = useTransform(scrollY, [0, 100], ["blur(0px)", "blur(20px)"])
   const headerTextColor = isDark ? "text-white" : "text-gray-900"
 
-  const handleDownloadResume = () => {
-    const link = document.createElement("a")
-    link.href = "/resume2.pdf"
-    link.download = "resume2.pdf"
-    link.click()
-  }
+  // const handleDownloadResume = () => {
+  //   const link = document.createElement("a")
+  //   link.href = "/resume2.pdf"
+  //   link.download = "resume2.pdf"
+  //   link.click()
+  // }
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -125,13 +125,13 @@ export default function Header() {
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: "backOut" }}
           >
-            <Button
+            {/* <Button
               onClick={handleDownloadResume}
               className="hidden md:flex items-center space-x-2 relative overflow-hidden hover:scale-105 transition-all duration-300 group"
             >
               <Download className="h-4 w-4" />
               <span>Resume</span>
-            </Button>
+            </Button> */}
             {/* <Button
               asChild
               className="flex items-center space-x-2 w-fit hover:scale-105 transition-transform duration-300"
