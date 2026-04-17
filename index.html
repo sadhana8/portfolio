@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>💻 Sadhana Sudha | Python Backend Developer</title>
+<title>Sadhana Sudha | Python Backend Developer</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👩</text></svg>">
 <meta name="description" content="Python Backend Developer — FastAPI, Django, REST APIs, AI/ML. Kathmandu, Nepal.">
 <meta name="author" content="Sadhana Sudha">
 <meta name="robots" content="index,follow">
@@ -199,21 +200,61 @@ canvas{position:absolute;inset:0;z-index:0}
 .srv-tag{padding:3px 9px;border:1px solid rgba(0,229,255,.2);font-family:var(--mo);font-size:10px;color:var(--txd);background:rgba(0,229,255,.04)}
 
 /* SKILLS */
-.sw{display:grid;grid-template-columns:1fr 1fr;gap:20px;position:relative;z-index:1}
-.sp2{border:1px solid var(--bd);background:var(--bg2);overflow:hidden}
-.sph{display:flex;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid var(--bd2);background:rgba(0,255,136,.04)}
-.stag{padding:3px 10px;background:rgba(0,255,136,.1);border:1px solid var(--bd);font-family:var(--mo);font-size:10px;color:var(--g);letter-spacing:1px}
-.spt{font-family:var(--mo);font-size:12px;color:var(--tx)}
-.spb{padding:16px;display:flex;flex-direction:column;gap:12px}
-.sr{display:flex;flex-direction:column;gap:5px}
-.srt{display:flex;justify-content:space-between}
-.sn{font-family:var(--mo);font-size:11px;color:var(--txd)}
-.spct{font-family:var(--mo);font-size:11px;color:var(--g)}
-.sbb{height:3px;background:rgba(0,255,136,.1);border-radius:2px;overflow:hidden}
-.sbf{height:100%;width:0%;border-radius:2px;background:linear-gradient(90deg,var(--g),var(--cy),rgba(0,255,136,.7));background-size:200% 100%;transition:width 1.2s cubic-bezier(.4,0,.2,1);box-shadow:0 0 6px var(--g);animation:skillShine 3s linear infinite}
-.tg{margin-top:36px;display:flex;flex-wrap:wrap;gap:8px;position:relative;z-index:1}
-.tc2{padding:5px 14px;border:1px solid var(--bd);font-family:var(--mo);font-size:11px;color:var(--txd);background:var(--bg2);transition:all .2s}
-.tc2:hover{border-color:var(--g);color:var(--g);background:var(--gg)}
+.sk-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;position:relative;z-index:1}
+.sk-box{border:1px solid var(--bd2);border-top-width:2px;background:var(--bg2);overflow:hidden;transition:border-color .3s,box-shadow .3s,transform .12s ease;transform-style:preserve-3d;will-change:transform}
+.sk-box:hover{box-shadow:0 0 32px rgba(0,0,0,.4)}
+.sk-box:hover .sk-head{background:rgba(255,255,255,.025)}
+/* accent colours per box */
+.sk-box:nth-child(1){border-top-color:#00ff88}
+.sk-box:nth-child(1) .sk-cat{color:#00ff88}
+.sk-box:nth-child(1) .sk-icon{color:#00ff88}
+.sk-box:nth-child(1):hover{border-color:#00ff88;box-shadow:0 0 32px rgba(0,255,136,.12),0 16px 48px rgba(0,0,0,.3)}
+.sk-box:nth-child(1) .sk-pill:hover{border-color:#00ff88;color:#00ff88;background:rgba(0,255,136,.09)}
+
+.sk-box:nth-child(2){border-top-color:#00e5ff}
+.sk-box:nth-child(2) .sk-cat{color:#00e5ff}
+.sk-box:nth-child(2) .sk-icon{color:#00e5ff}
+.sk-box:nth-child(2):hover{border-color:#00e5ff;box-shadow:0 0 32px rgba(0,229,255,.12),0 16px 48px rgba(0,0,0,.3)}
+.sk-box:nth-child(2) .sk-pill:hover{border-color:#00e5ff;color:#00e5ff;background:rgba(0,229,255,.09)}
+
+.sk-box:nth-child(3){border-top-color:#c792ea}
+.sk-box:nth-child(3) .sk-cat{color:#c792ea}
+.sk-box:nth-child(3) .sk-icon{color:#c792ea}
+.sk-box:nth-child(3):hover{border-color:#c792ea;box-shadow:0 0 32px rgba(199,146,234,.12),0 16px 48px rgba(0,0,0,.3)}
+.sk-box:nth-child(3) .sk-pill:hover{border-color:#c792ea;color:#c792ea;background:rgba(199,146,234,.09)}
+
+.sk-box:nth-child(4){border-top-color:#ffcc00}
+.sk-box:nth-child(4) .sk-cat{color:#ffcc00}
+.sk-box:nth-child(4) .sk-icon{color:#ffcc00}
+.sk-box:nth-child(4):hover{border-color:#ffcc00;box-shadow:0 0 32px rgba(255,204,0,.12),0 16px 48px rgba(0,0,0,.3)}
+.sk-box:nth-child(4) .sk-pill:hover{border-color:#ffcc00;color:#ffcc00;background:rgba(255,204,0,.09)}
+
+.sk-box:nth-child(5){border-top-color:#ff9966}
+.sk-box:nth-child(5) .sk-cat{color:#ff9966}
+.sk-box:nth-child(5) .sk-icon{color:#ff9966}
+.sk-box:nth-child(5):hover{border-color:#ff9966;box-shadow:0 0 32px rgba(255,153,102,.12),0 16px 48px rgba(0,0,0,.3)}
+.sk-box:nth-child(5) .sk-pill:hover{border-color:#ff9966;color:#ff9966;background:rgba(255,153,102,.09)}
+
+.sk-head{display:flex;align-items:center;gap:12px;padding:16px 20px 14px;border-bottom:1px solid var(--bd2);transition:background .25s}
+.sk-icon{font-size:18px;line-height:1;flex-shrink:0;width:28px;text-align:center}
+.sk-cat{font-family:var(--dp);font-size:11px;letter-spacing:2px;font-weight:700;text-transform:uppercase}
+.sk-pills{padding:16px 18px 18px;display:flex;flex-wrap:wrap;gap:8px}
+.sk-pill{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border:1px solid var(--bd2);background:var(--bg3);font-family:var(--mo);font-size:11.5px;color:var(--txd);letter-spacing:.3px;transition:all .2s;cursor:default;white-space:nowrap}
+.sk-pill:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.35)}
+.sk-pill-ic{font-size:13px;line-height:1;flex-shrink:0}
+/* pill entrance animation when box comes into view */
+.sk-box.vis .sk-pill{animation:tagPop .3s ease both}
+.sk-box.vis .sk-pill:nth-child(1){animation-delay:.04s}
+.sk-box.vis .sk-pill:nth-child(2){animation-delay:.08s}
+.sk-box.vis .sk-pill:nth-child(3){animation-delay:.12s}
+.sk-box.vis .sk-pill:nth-child(4){animation-delay:.16s}
+.sk-box.vis .sk-pill:nth-child(5){animation-delay:.20s}
+.sk-box.vis .sk-pill:nth-child(6){animation-delay:.24s}
+.sk-box.vis .sk-pill:nth-child(7){animation-delay:.28s}
+.sk-box.vis .sk-pill:nth-child(8){animation-delay:.32s}
+.sk-box.vis .sk-pill:nth-child(9){animation-delay:.36s}
+/* last box full-width if odd count */
+.sk-grid .sk-box:last-child:nth-child(odd){grid-column:1/-1}
 
 /* EXPERIENCE */
 .tl2{display:flex;flex-direction:column;position:relative;padding-left:40px;z-index:1}
@@ -384,14 +425,14 @@ footer{background:#010306;border-top:1px solid var(--bd2);padding:18px 48px;posi
   <nav class="nav">
     <a href="#home" class="logo">SADHANA<span>.DEV</span></a>
     <ul class="nlinks" id="nlinks">
-      <li><a href="#home" data-s="home">// home</a></li>
-      <li><a href="#about" data-s="about">// about</a></li>
-      <li><a href="#education" data-s="education">// edu</a></li>
-      <li><a href="#services" data-s="services">// services</a></li>
-      <li><a href="#skills" data-s="skills">// skills</a></li>
-      <li><a href="#experience" data-s="experience">// exp</a></li>
-      <li><a href="#projects" data-s="projects">// projects</a></li>
-      <li><a href="#contact" data-s="contact">// contact</a></li>
+      <li><a href="#home" data-s="home"> Home</a></li>
+      <li><a href="#about" data-s="about"> About</a></li>
+      <li><a href="#education" data-s="education"> Edu</a></li>
+      <li><a href="#services" data-s="services"> Services</a></li>
+      <li><a href="#skills" data-s="skills"> Skills</a></li>
+      <li><a href="#experience" data-s="experience"> Exp</a></li>
+      <li><a href="#projects" data-s="projects"> Projects</a></li>
+      <li><a href="#contact" data-s="contact"> Contact</a></li>
     </ul>
     <div class="nstat"><div class="sdot"></div><span>available_for_hire</span></div>
     <button class="mtog" id="mtog">&#9776;</button>
@@ -518,41 +559,96 @@ footer{background:#010306;border-top:1px solid var(--bd2);padding:18px 48px;posi
   <div class="slbl">// 04. SKILLS</div>
   <h2 class="stit">Tech <span>Stack</span></h2>
   <div class="sline"></div>
-  <div class="sw">
-    <div class="sp2 fu"><div class="sph"><span class="stag">{ }</span><span class="spt">Languages &amp; Frameworks</span></div><div class="spb">
-      <div class="sr"><div class="srt"><span class="sn">Python</span><span class="spct">90%</span></div><div class="sbb"><div class="sbf" data-w="90"></div></div></div>
-      <div class="sr"><div class="srt"><span class="sn">FastAPI</span><span class="spct">75%</span></div><div class="sbb"><div class="sbf" data-w="75"></div></div></div>
-      <div class="sr"><div class="srt"><span class="sn">Django</span><span class="spct">55%</span></div><div class="sbb"><div class="sbf" data-w="55"></div></div></div>
-      <div class="sr"><div class="srt"><span class="sn">JavaScript / TypeScript</span><span class="spct">80%</span></div><div class="sbb"><div class="sbf" data-w="80"></div></div></div>
-      <div class="sr"><div class="srt"><span class="sn">Java (Spring Boot)</span><span class="spct">62%</span></div><div class="sbb"><div class="sbf" data-w="62"></div></div></div>
-      <div class="sr"><div class="srt"><span class="sn">PHP / MySQL</span><span class="spct">60%</span></div><div class="sbb"><div class="sbf" data-w="60"></div></div></div>
-    </div></div>
-    <div class="sp2 fu"><div class="sph"><span class="stag">DB</span><span class="spt">Databases &amp; APIs</span></div><div class="spb">
-      <div class="sr"><div class="srt"><span class="sn">MongoDB</span><span class="spct">82%</span></div><div class="sbb"><div class="sbf" data-w="82"></div></div></div>
-      <div class="sr"><div class="srt"><span class="sn">PostgreSQL</span><span class="spct">70%</span></div><div class="sbb"><div class="sbf" data-w="70"></div></div></div>
-      <div class="sr"><div class="srt"><span class="sn">MySQL</span><span class="spct">75%</span></div><div class="sbb"><div class="sbf" data-w="75"></div></div></div>
-      <div class="sr"><div class="srt"><span class="sn">REST APIs</span><span class="spct">88%</span></div><div class="sbb"><div class="sbf" data-w="88"></div></div></div>
-      <div class="sr"><div class="srt"><span class="sn">JWT Auth</span><span class="spct">78%</span></div><div class="sbb"><div class="sbf" data-w="78"></div></div></div>
-      <div class="sr"><div class="srt"><span class="sn">SQLAlchemy / ORM</span><span class="spct">72%</span></div><div class="sbb"><div class="sbf" data-w="72"></div></div></div>
-    </div></div>
-    <div class="sp2 fu"><div class="sph"><span class="stag">AI</span><span class="spt">AI / ML</span></div><div class="spb">
-      <div class="sr"><div class="srt"><span class="sn">Machine Learning</span><span class="spct">68%</span></div><div class="sbb"><div class="sbf" data-w="68"></div></div></div>
-      <div class="sr"><div class="srt"><span class="sn">NLP</span><span class="spct">65%</span></div><div class="sbb"><div class="sbf" data-w="65"></div></div></div>
-      <div class="sr"><div class="srt"><span class="sn">TF-IDF &amp; Cosine Sim</span><span class="spct">52%</span></div><div class="sbb"><div class="sbf" data-w="52"></div></div></div>
-      <div class="sr"><div class="srt"><span class="sn">DSA</span><span class="spct">66%</span></div><div class="sbb"><div class="sbf" data-w="66"></div></div></div>
-      <div class="sr"><div class="srt"><span class="sn">Pandas / NumPy</span><span class="spct">74%</span></div><div class="sbb"><div class="sbf" data-w="74"></div></div></div>
-    </div></div>
-    <div class="sp2 fu"><div class="sph"><span class="stag">OPS</span><span class="spt">Tools &amp; Frontend</span></div><div class="spb">
-      <div class="sr"><div class="srt"><span class="sn">Git &amp; GitHub</span><span class="spct">86%</span></div><div class="sbb"><div class="sbf" data-w="86"></div></div></div>
-      <div class="sr"><div class="srt"><span class="sn">Next.js / React</span><span class="spct">70%</span></div><div class="sbb"><div class="sbf" data-w="70"></div></div></div>
-      <div class="sr"><div class="srt"><span class="sn">Tailwind CSS</span><span class="spct">74%</span></div><div class="sbb"><div class="sbf" data-w="74"></div></div></div>
-      <div class="sr"><div class="srt"><span class="sn">Postman / Swagger</span><span class="spct">82%</span></div><div class="sbb"><div class="sbf" data-w="82"></div></div></div>
-      <div class="sr"><div class="srt"><span class="sn">Linux / Bash</span><span class="spct">68%</span></div><div class="sbb"><div class="sbf" data-w="68"></div></div></div>
-    </div></div>
+  <div class="sk-grid">
+
+    <div class="sk-box fu">
+      <div class="sk-head">
+        <span class="sk-icon">🐍</span>
+        <span class="sk-cat">Languages &amp; Frameworks</span>
+      </div>
+      <div class="sk-pills">
+        <span class="sk-pill"><span class="sk-pill-ic">🐍</span> Python</span>
+        <span class="sk-pill"><span class="sk-pill-ic">⚡</span> FastAPI</span>
+        <span class="sk-pill"><span class="sk-pill-ic">🎸</span> Django</span>
+        <span class="sk-pill"><span class="sk-pill-ic">📜</span> JavaScript</span>
+        <span class="sk-pill"><span class="sk-pill-ic">🔷</span> TypeScript</span>
+        <span class="sk-pill"><span class="sk-pill-ic">☕</span> Java</span>
+        <span class="sk-pill"><span class="sk-pill-ic">🌱</span> Spring Boot</span>
+        <span class="sk-pill"><span class="sk-pill-ic">🐘</span> PHP</span>
+      </div>
+    </div>
+
+    <div class="sk-box fu">
+      <div class="sk-head">
+        <span class="sk-icon">🗄️</span>
+        <span class="sk-cat">Databases &amp; APIs</span>
+      </div>
+      <div class="sk-pills">
+        <span class="sk-pill"><span class="sk-pill-ic">🍃</span> MongoDB</span>
+        <span class="sk-pill"><span class="sk-pill-ic">🐘</span> PostgreSQL</span>
+        <span class="sk-pill"><span class="sk-pill-ic">🐬</span> MySQL</span>
+        <span class="sk-pill"><span class="sk-pill-ic">🔗</span> REST APIs</span>
+        <span class="sk-pill"><span class="sk-pill-ic">🔐</span> JWT Auth</span>
+        <span class="sk-pill"><span class="sk-pill-ic">🧬</span> SQLAlchemy</span>
+        <span class="sk-pill"><span class="sk-pill-ic">📋</span> Swagger</span>
+        <span class="sk-pill"><span class="sk-pill-ic">✅</span> Pydantic</span>
+      </div>
+    </div>
+
+    <div class="sk-box fu">
+      <div class="sk-head">
+        <span class="sk-icon">🤖</span>
+        <span class="sk-cat">AI / ML</span>
+      </div>
+      <div class="sk-pills">
+        <span class="sk-pill"><span class="sk-pill-ic">🤖</span> Machine Learning</span>
+        <span class="sk-pill"><span class="sk-pill-ic">💬</span> NLP</span>
+        <span class="sk-pill"><span class="sk-pill-ic">📊</span> TF-IDF</span>
+        <span class="sk-pill"><span class="sk-pill-ic">📐</span> Cosine Similarity</span>
+        <span class="sk-pill"><span class="sk-pill-ic">🔬</span> scikit-learn</span>
+        <span class="sk-pill"><span class="sk-pill-ic">🐼</span> Pandas</span>
+        <span class="sk-pill"><span class="sk-pill-ic">🔢</span> NumPy</span>
+        <span class="sk-pill"><span class="sk-pill-ic">📈</span> DSA</span>
+      </div>
+    </div>
+
+    <div class="sk-box fu">
+      <div class="sk-head">
+        <span class="sk-icon">🛠️</span>
+        <span class="sk-cat">Tools &amp; DevOps</span>
+      </div>
+      <div class="sk-pills">
+        <span class="sk-pill"><span class="sk-pill-ic">🐙</span> Git &amp; GitHub</span>
+        <span class="sk-pill"><span class="sk-pill-ic">🐋</span> Docker</span>
+        <span class="sk-pill"><span class="sk-pill-ic">🧪</span> Postman</span>
+        <span class="sk-pill"><span class="sk-pill-ic">▲</span> Vercel</span>
+        <span class="sk-pill"><span class="sk-pill-ic">🌐</span> Netlify</span>
+        <span class="sk-pill"><span class="sk-pill-ic">🐧</span> Linux / Bash</span>
+        <span class="sk-pill"><span class="sk-pill-ic">⚙️</span> VS Code</span>
+        <span class="sk-pill"><span class="sk-pill-ic">🔥</span> PyCharm</span>
+      </div>
+    </div>
+
+    <div class="sk-box fu">
+      <div class="sk-head">
+        <span class="sk-icon">⚛️</span>
+        <span class="sk-cat">Frontend &amp; Libraries</span>
+      </div>
+      <div class="sk-pills">
+        <span class="sk-pill"><span class="sk-pill-ic">⚛️</span> React</span>
+        <span class="sk-pill"><span class="sk-pill-ic">▲</span> Next.js</span>
+        <span class="sk-pill"><span class="sk-pill-ic">💨</span> Tailwind CSS</span>
+        <span class="sk-pill"><span class="sk-pill-ic">💳</span> Stripe</span>
+        <span class="sk-pill"><span class="sk-pill-ic">🔑</span> Clerk Auth</span>
+        <span class="sk-pill"><span class="sk-pill-ic">📦</span> Sanity CMS</span>
+        <span class="sk-pill"><span class="sk-pill-ic">🎞️</span> GSAP</span>
+        <span class="sk-pill"><span class="sk-pill-ic">📄</span> JavaDoc</span>
+      </div>
+    </div>
+
   </div>
-  <div class="slbl" style="margin-top:40px;margin-bottom:13px">// TOOLS &amp; LIBRARIES</div>
-  <div class="tg"><span class="tc2">Pydantic</span><span class="tc2">Uvicorn</span><span class="tc2">Celery</span><span class="tc2">Three.js</span><span class="tc2">GSAP</span><span class="tc2">SQLAlchemy</span><span class="tc2">Sanity CMS</span><span class="tc2">Stripe</span><span class="tc2">Clerk Auth</span><span class="tc2">Vercel</span><span class="tc2">VS Code</span><span class="tc2">PyCharm</span><span class="tc2">Docker</span><span class="tc2">Netlify</span><span class="tc2">JavaDoc</span></div>
 </section>
+
 
 <!-- EXPERIENCE -->
 <section id="experience" class="sec" style="background:var(--bg2)">
